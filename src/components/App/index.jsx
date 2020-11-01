@@ -296,7 +296,8 @@ const App = () => {
   }, [getCell, goToNext, grid, height, selected, width]);
 
   const onKeyboardClick = useCallback((value) => {
-    onKeyDown({ keyCode: value.charCodeAt(0) });
+    const keyCode = value === 'CLEAR' ? Keys.BACKSPACE : value.charCodeAt(0);
+    onKeyDown({ keyCode });
   }, [onKeyDown]);
 
   const onClueClick = useCallback((clueIndex, newMode) => {

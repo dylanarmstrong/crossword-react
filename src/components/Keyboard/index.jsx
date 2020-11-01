@@ -14,7 +14,6 @@ const KeyboardContainer = styled.div`
 
 const Key = styled.div`
   display: flex;
-  width: 30px;
   height: 35px;
   font-size: 18px;
   background-color: ${colors.lightBlue};
@@ -29,14 +28,16 @@ const Key = styled.div`
 
 const Row1 = styled.div`
   display: grid;
-  grid-template-columns: repeat(16, 35px);
+  grid-template-columns: repeat(10, 35px);
+  grid-gap: 5px;
   width: 100%;
   margin-bottom: 5px;
 `;
 
 const Row2 = styled.div`
   display: grid;
-  grid-template-columns: repeat(16, 35px);
+  grid-template-columns: repeat(9, 35px);
+  grid-gap: 5px;
   width: 100%;
   margin-bottom: 5px;
   margin-left: 10px;
@@ -44,7 +45,8 @@ const Row2 = styled.div`
 
 const Row3 = styled.div`
   display: grid;
-  grid-template-columns: repeat(16, 35px);
+  grid-template-columns: repeat(7, 35px) 75px;
+  grid-gap: 5px;
   width: 100%;
   margin-bottom: 5px;
   margin-left: 20px;
@@ -76,7 +78,7 @@ const Keyboard = ({ onClick }) => {
     </Key>
   ));
 
-  const row3 = ['Z', 'X', 'C', 'V', 'B', 'N', 'M'].map((key) => (
+  const row3 = ['Z', 'X', 'C', 'V', 'B', 'N', 'M', 'CLEAR'].map((key) => (
     <Key
       key={`key-${key}`}
       onClick={handleClick}
