@@ -28,7 +28,7 @@ const PuzzleContainer = styled(({ width, ...props }) => <Empty {...props} />)`
   @media print {
     grid-template-columns: auto;
   }
-`;
+`; // ` Mess with Github syntax highlighting
 
 const FileContainer = styled.div`
   margin-top: 5px;
