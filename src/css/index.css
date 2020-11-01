@@ -1,0 +1,9 @@
+body {
+  margin: 0;
+  margin-top: 10px;
+  background: white;
+  font-family: 'Raleway', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: subpixel-antialiased;
+  letter-spacing: -.25px;
+  -moz-osx-font-smoothing: grayscale;
+}
