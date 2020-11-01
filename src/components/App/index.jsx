@@ -362,7 +362,7 @@ const App = () => {
           </FileContainer>
         </>
       )}
-      {/* </> Thanks Github */}
+      {/* </> For Github syntax highlighting */}
       {grid && (
         <PuzzleContainer width={width}>
           <Puzzle
