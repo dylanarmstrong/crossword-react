@@ -5,6 +5,11 @@ import styled from 'styled-components';
 import { colors } from '../../css';
 
 const KeyboardContainer = styled.div`
+  display: block;
+
+  @media (min-width: 1200px) {
+    display: none;
+  }
 `;
 
 const Key = styled.div`
