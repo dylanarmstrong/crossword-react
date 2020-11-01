@@ -5,6 +5,7 @@ import parse from '@dylanarmstrong/puz';
 import styled from 'styled-components';
 
 import Clues from '../Clues';
+import Keyboard from '../Keyboard';
 import Puzzle from '../Puzzle';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import { CELL_SIZE } from '../Cell';
@@ -111,9 +112,7 @@ const App = () => {
     });
   };
 
-  const { grid } = state;
-
-  const { author, copyright, height, mode, selected, title, width } = state;
+  const { author, copyright, grid, height, mode, selected, title, width } = state;
   const byline = [title, author, copyright].filter(Boolean).join(' ');
 
   const getCell = useCallback((x, y) => grid[y][x], [grid]);
@@ -291,10 +290,14 @@ const App = () => {
       prevent = false;
     }
 
-    if (prevent) {
+    if (prevent && typeof e.preventDefault === 'function') {
       e.preventDefault();
     }
   }, [getCell, goToNext, grid, height, selected, width]);
+
+  const onKeyboardClick = useCallback((value) => {
+    onKeyDown({ keyCode: value.charCodeAt(0) });
+  }, [onKeyDown]);
 
   const onClueClick = useCallback((clueIndex, newMode) => {
     dispatch({
@@ -369,23 +372,26 @@ const App = () => {
       )}
       {/* </> For Github syntax highlighting */}
       {grid && (
-        <PuzzleContainer width={width}>
-          <Puzzle
-            grid={grid}
-            height={height}
-            onSelect={onSelect}
-            width={width}
-          />
-          <Clues
-            acrossClues={state.acrossClues}
-            clueIndex={state.clueIndex}
-            downClues={state.downClues}
-            height={height * CELL_SIZE}
-            mode={mode}
-            onClick={onClueClick}
-            width={width * CELL_SIZE}
-          />
-        </PuzzleContainer>
+        <>
+          <PuzzleContainer width={width}>
+            <Puzzle
+              grid={grid}
+              height={height}
+              onSelect={onSelect}
+              width={width}
+            />
+            <Clues
+              acrossClues={state.acrossClues}
+              clueIndex={state.clueIndex}
+              downClues={state.downClues}
+              height={height * CELL_SIZE}
+              mode={mode}
+              onClick={onClueClick}
+              width={width * CELL_SIZE}
+            />
+          </PuzzleContainer>
+          <Keyboard onClick={onKeyboardClick} />
+        </>
       )}
     </Container>
   );
