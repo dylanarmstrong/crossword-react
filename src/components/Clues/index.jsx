@@ -50,7 +50,12 @@ const Active = styled.div`
   margin-top: 5px;
   margin-bottom: 5px;
   border-bottom: 2px solid ${colors.darkBlue};
+  display: block;
   width: ${(props) => props.width - 20}px;
+
+  @media (min-width: 992px) {
+    display: none;
+  }
 `;
 
 const Clues = ({ acrossClues, clueIndex, downClues, height, mode, onClick, width }) => {
