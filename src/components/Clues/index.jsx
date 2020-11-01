@@ -19,9 +19,13 @@ const ClueList = styled(({ height, ...props }) => <Empty {...props} />)`
 `;
 
 const ClueContainer = styled.div`
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-column-gap: 10px;
+  display: none;
+
+  @media (min-width: 992px) {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 10px;
+  }
 `;
 
 const Title = styled.strong`
@@ -39,68 +43,90 @@ const Title = styled.strong`
   `}
 `;
 
-const Clues = ({ acrossClues, clueIndex, downClues, height, mode, onClick }) => {
+const Active = styled.div`
+  padding: 10px;
+  background-color: ${colors.blue};
+  font-size: 16px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-bottom: 2px solid ${colors.darkBlue};
+  width: ${(props) => props.width - 20}px;
+`;
+
+const Clues = ({ acrossClues, clueIndex, downClues, height, mode, onClick, width }) => {
   const acrossRef = useRef(null);
   const downRef = useRef(null);
 
   useEffect(() => {
-    if (acrossRef.current) {
+    if (acrossRef.current && typeof acrossRef.current.scrollIntoViewIfNeeded === 'function') {
       acrossRef.current.scrollIntoViewIfNeeded();
     }
 
-    if (downRef.current) {
+    if (downRef.current && typeof downRef.current.scrollIntoViewIfNeeded === 'function') {
       downRef.current.scrollIntoViewIfNeeded();
     }
   }, [clueIndex]);
 
-  return (
-    <ClueContainer>
-      {acrossClues.length > 0 && (
-        <>
-          <Title one>Across</Title>
-          <ClueList height={height}>
-            {acrossClues.map(({ clue, index }, i) => {
-              const isHighlighted = clueIndex === index;
-              return (
-                <Clue
-                  clue={clue}
-                  index={index}
-                  innerRef={isHighlighted ? acrossRef : null}
-                  isHighlighted={isHighlighted}
-                  isMode={mode === 'across'}
-                  key={`clue-across-${i}`}
-                  mode="across"
-                  onClick={onClick}
-                />
-              );
-            })}
-          </ClueList>
-        </>
-      )}
+  const { clue: activeClue } = (mode === 'across' ? acrossClues : downClues)
+    .find(({ index }) => index === clueIndex);
 
-      {downClues.length > 0 && (
-        <>
-          <Title two>Down</Title>
-          <ClueList height={height}>
-            {downClues.map(({ clue, index }, i) => {
-              const isHighlighted = clueIndex === index;
-              return (
-                <Clue
-                  clue={clue}
-                  index={index}
-                  innerRef={isHighlighted ? downRef : null}
-                  isHighlighted={isHighlighted}
-                  isMode={mode === 'down'}
-                  key={`clue-down-${i}`}
-                  mode="down"
-                  onClick={onClick}
-                />
-              );
-            })}
-          </ClueList>
-        </>
-      )}
-    </ClueContainer>
+  return (
+    <>
+      <Active width={width}>
+        <strong>
+          {clueIndex}
+          .
+        </strong>
+        {activeClue}
+      </Active>
+      <ClueContainer>
+        {acrossClues.length > 0 && (
+          <>
+            <Title one>Across</Title>
+            <ClueList height={height}>
+              {acrossClues.map(({ clue, index }, i) => {
+                const isHighlighted = clueIndex === index;
+                return (
+                  <Clue
+                    clue={clue}
+                    index={index}
+                    innerRef={isHighlighted ? acrossRef : null}
+                    isHighlighted={isHighlighted}
+                    isMode={mode === 'across'}
+                    key={`clue-across-${i}`}
+                    mode="across"
+                    onClick={onClick}
+                  />
+                );
+              })}
+            </ClueList>
+          </>
+        )}
+
+        {downClues.length > 0 && (
+          <>
+            <Title two>Down</Title>
+            <ClueList height={height}>
+              {downClues.map(({ clue, index }, i) => {
+                const isHighlighted = clueIndex === index;
+                return (
+                  <Clue
+                    clue={clue}
+                    index={index}
+                    innerRef={isHighlighted ? downRef : null}
+                    isHighlighted={isHighlighted}
+                    isMode={mode === 'down'}
+                    key={`clue-down-${i}`}
+                    mode="down"
+                    onClick={onClick}
+                  />
+                );
+              })}
+            </ClueList>
+          </>
+        )}
+      </ClueContainer>
+    </>
   );
 };
 
@@ -123,6 +149,7 @@ Clues.propTypes = {
   height: PropTypes.number.isRequired,
   mode: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
+  width: PropTypes.number.isRequired,
 };
 
 export default Clues;

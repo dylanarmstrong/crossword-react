@@ -59,6 +59,7 @@ const Cell = ({
           fontVariant="small-caps"
           height={CELL_SIZE}
           onMouseDown={onMouseDown}
+          onTouchEnd={onMouseDown}
           text={text}
           verticalAlign="middle"
           width={CELL_SIZE}

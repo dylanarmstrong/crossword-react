@@ -22,8 +22,12 @@ const Empty = styled.div``;
 // eslint-disable-next-line no-unused-vars
 const PuzzleContainer = styled(({ width, ...props }) => <Empty {...props} />)`
   display: grid;
-  grid-template-columns: calc(${(props) => props.width} * ${CELL_SIZE}px) auto auto;
+  grid-template-columns: auto;
   grid-column-gap: 10px;
+
+  @media (min-width: 1200px) {
+    grid-template-columns: calc(${(props) => props.width} * ${CELL_SIZE}px) auto auto;
+  }
 
   @media print {
     grid-template-columns: auto;
@@ -34,10 +38,11 @@ const FileContainer = styled.div`
   margin-top: 5px;
   background-color: #fafafa;
   border: 5px dashed #1f1f1f;
-  width: 100%;
+  width: 95%;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   font-size: 2.5rem;
   color: ${colors.black};
 `;
@@ -156,8 +161,8 @@ const App = () => {
         }
       }
     }
-    return null;
-  }, [getCellByCell, grid, mode]);
+    return getCellByClue(1);
+  }, [getCellByCell, getCellByClue, grid, mode]);
 
   const getCoord = useCallback((cell) => (
     {
@@ -180,7 +185,7 @@ const App = () => {
 
     const { x, y } = getCoord(cell);
 
-    if (isDisabled(x, y)) {
+    if (x > width - 1 || y > height - 1 || isDisabled(x, y)) {
       return getCoord(getNextClue(originalCell).cell);
     }
 
@@ -289,7 +294,7 @@ const App = () => {
     if (prevent) {
       e.preventDefault();
     }
-  }, [goToNext, grid, height, selected, width]);
+  }, [getCell, goToNext, grid, height, selected, width]);
 
   const onClueClick = useCallback((clueIndex, newMode) => {
     dispatch({
@@ -378,6 +383,7 @@ const App = () => {
             height={height * CELL_SIZE}
             mode={mode}
             onClick={onClueClick}
+            width={width * CELL_SIZE}
           />
         </PuzzleContainer>
       )}

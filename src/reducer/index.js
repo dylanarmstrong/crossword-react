@@ -46,7 +46,6 @@ export const reducer = (state, action) => {
     }
 
     case SET_PUZ: {
-      // TODO: add raw to puz for saving
       const { puz } = data;
       if (!_.get(puz, 'valid', false)) {
         return state;
