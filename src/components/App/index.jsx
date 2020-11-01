@@ -233,7 +233,7 @@ const App = () => {
         type: FILL,
       });
       goToNext(x, y);
-    } else if (keyCode === Keys.BACKSPACE) {
+    } else if (keyCode === Keys.BACKSPACE && !getCell(x, y).isBlack) {
       dispatch({
         data: {
           value: '',
