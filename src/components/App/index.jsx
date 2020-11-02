@@ -339,15 +339,12 @@ const App = () => {
     if (grid && selected.x === -1 && selected.y === -1) {
       dispatch({
         data: {
-          selected: {
-            x: 0,
-            y: 0,
-          },
+          selected: getCoord(getCellByClue(1).cell),
         },
         type: SET_SELECTED,
       });
     }
-  }, [grid, selected.x, selected.y]);
+  }, [getCellByClue, getCoord, grid, selected.x, selected.y]);
 
   return (
     <Container onKeyDown={onKeyDown} tabIndex={0} >

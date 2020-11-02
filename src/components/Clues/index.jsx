@@ -73,7 +73,7 @@ const Clues = ({ acrossClues, clueIndex, downClues, height, mode, onClick, width
   }, [clueIndex]);
 
   const { clue: activeClue } = (mode === 'across' ? acrossClues : downClues)
-    .find(({ index }) => index === clueIndex);
+    .find(({ index }) => index === clueIndex) || { clue: null };
 
   return (
     <>
