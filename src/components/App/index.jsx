@@ -20,7 +20,7 @@ import { colors } from '../../css';
 
 // Stop props from bleeding through to DOM
 const Empty = styled.div``;
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line no-unused-vars, react/jsx-props-no-spreading
 const PuzzleContainer = styled(({ width, ...props }) => <Empty {...props} />)`
   display: grid;
   grid-template-columns: auto;

@@ -5,7 +5,7 @@
   "private": true,
   "license": "MIT",
   "devDependencies": {
-    "@dylanarmstrong/eslint-config": "^0.2.1",
+    "@dylanarmstrong/eslint-config": "^0.2.3",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -35,11 +35,7 @@
     "test": "react-scripts test"
   },
   "eslintConfig": {
-    "extends": "@dylanarmstrong",
-    "rules": {
-      "react/jsx-props-no-spreading": "off",
-      "indent": ["error", 2, { "SwitchCase": 1 }]
-    }
+    "extends": "@dylanarmstrong"
   },
   "browserslist": {
     "production": [

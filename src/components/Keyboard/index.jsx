@@ -58,7 +58,7 @@ const Keyboard = ({ onClick }) => {
     e.preventDefault();
   }, [onClick]);
 
-  const row1 = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'].map((key) => (
+  const mapKey = (key) => (
     <Key
       key={`key-${key}`}
       onClick={handleClick}
@@ -66,27 +66,11 @@ const Keyboard = ({ onClick }) => {
     >
       {key}
     </Key>
-  ));
+  );
 
-  const row2 = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'].map((key) => (
-    <Key
-      key={`key-${key}`}
-      onClick={handleClick}
-      onTouchEnd={handleClick}
-    >
-      {key}
-    </Key>
-  ));
-
-  const row3 = ['Z', 'X', 'C', 'V', 'B', 'N', 'M', 'CLEAR'].map((key) => (
-    <Key
-      key={`key-${key}`}
-      onClick={handleClick}
-      onTouchEnd={handleClick}
-    >
-      {key}
-    </Key>
-  ));
+  const row1 = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'].map(mapKey);
+  const row2 = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'].map(mapKey);
+  const row3 = ['Z', 'X', 'C', 'V', 'B', 'N', 'M', 'CLEAR'].map(mapKey);
 
   return (
     <KeyboardContainer>

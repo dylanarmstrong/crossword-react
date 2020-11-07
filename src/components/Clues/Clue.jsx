@@ -18,7 +18,7 @@ const Empty = styled.div``;
 const ClueContainer = styled(
   // eslint-disable-next-line react/display-name
   React.forwardRef(
-    // eslint-disable-next-line no-unused-vars, react/prop-types
+    // eslint-disable-next-line no-unused-vars, react/prop-types, react/jsx-props-no-spreading
     ({ isHighlighted, isMode, ...props }, ref) => <Empty {...props} ref={ref} />,
   ),
 )`
