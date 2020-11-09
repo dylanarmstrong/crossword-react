@@ -15,7 +15,7 @@
     "eslint-plugin-react-hooks": "^4.2.0"
   },
   "dependencies": {
-    "@dylanarmstrong/puz": "0.0.5",
+    "@dylanarmstrong/puz": "0.0.6",
     "fontsource-raleway": "^3.0.9",
     "konva": "^7.1.4",
     "lodash": "^4.17.20",
