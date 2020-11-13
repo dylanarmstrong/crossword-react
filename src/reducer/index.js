@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import md5 from 'md5';
 
-export const initialState = {
+const initialState = {
   acrossClues: [],
   author: '',
   clueIndex: 1,
@@ -22,11 +22,11 @@ export const initialState = {
   width: 1,
 };
 
-export const FILL = 'FILL';
-export const SET_PUZ = 'SET_PUZ';
-export const SET_SELECTED = 'SET_SELECTED';
+const FILL = 'FILL';
+const SET_PUZ = 'SET_PUZ';
+const SET_SELECTED = 'SET_SELECTED';
 
-export const reducer = (state, action) => {
+const reducer = (state, action) => {
   const { data, type } = action;
   switch (type) {
     case FILL: {
@@ -181,4 +181,12 @@ export const reducer = (state, action) => {
       return state;
     }
   }
+};
+
+export {
+  FILL,
+  SET_PUZ,
+  SET_SELECTED,
+  initialState,
+  reducer,
 };

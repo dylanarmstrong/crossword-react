@@ -5,7 +5,7 @@
   "private": true,
   "license": "MIT",
   "devDependencies": {
-    "@dylanarmstrong/eslint-config": "^0.2.3",
+    "@dylanarmstrong/eslint-config": "^0.2.5",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -30,7 +30,7 @@
   "scripts": {
     "build": "react-scripts build",
     "eject": "react-scripts eject",
-    "lint": "eslint ./src/**/*.js*",
+    "lint": "eslint ./src",
     "start": "react-scripts start",
     "test": "react-scripts test"
   },

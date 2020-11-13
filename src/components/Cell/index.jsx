@@ -4,7 +4,7 @@ import { Rect, Text } from 'react-konva';
 
 import { colors } from '../../css';
 
-export const CELL_SIZE = 25;
+const CELL_SIZE = 25;
 
 const Cell = ({
   clueIndex,
@@ -88,4 +88,5 @@ Cell.propTypes = {
   y: PropTypes.number.isRequired,
 };
 
+export { CELL_SIZE };
 export default React.memo(Cell);
