@@ -166,9 +166,9 @@ const App = () => {
   const getCoord = useCallback((cell) => (
     {
       x: cell % width,
-      y: Math.floor(cell / height),
+      y: Math.floor(cell / width),
     }
-  ), [height, width]);
+  ), [width]);
 
   const move = useCallback((depth, originalCell) => {
     if (depth > width * height) {
