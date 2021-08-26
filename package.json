@@ -3,7 +3,7 @@
   "homepage": "crossword",
   "version": "0.1.0",
   "private": true,
-  "license": "MIT",
+  "license": "ISC",
   "devDependencies": {
     "@dylanarmstrong/eslint-config": "^0.2.5",
     "@testing-library/jest-dom": "^4.2.4",

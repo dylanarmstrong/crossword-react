@@ -2,7 +2,7 @@
 
 Static site for playing crosswords. Running [here](https://dylan.is/crossword/).
 
-```bash
+```sh
 npm install
 npm run start
 ```
