@@ -1,6 +1,6 @@
 ## Crossword
 
-Static site for playing crosswords. Running [here](https://dylan.is/crossword/).
+Static site for playing crosswords. Running svelte version [here](https://dylan.is/crossword/).
 
 ```sh
 npm install
